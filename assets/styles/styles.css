@@ -20,7 +20,8 @@ h1 {
 }
 
 .game-btns {
-	/*position: absolute;*/
+	z-index: 1;
+	position: relative;
 	/*transform: rotate(45deg);*/
 }
 
@@ -28,6 +29,8 @@ h1 {
 	height: 10em;
 	width: 10em;
 	border: .25em solid #333;
+	/*cursor: pointer;*/
+	/*z-index: 2;*/
 }
 
 .btn-upper-left {
@@ -80,8 +83,15 @@ h1 {
     border-radius: 100%;
     position: absolute;
     top: 2.5em;
+
     left: 1.5em;
-    /*z-index: -1;*/
+    /*pointer-events: none;*/
+    z-index: 1;
+    overflow: hidden;
+}
+
+.game-controls .row {
+	overflow: hidden;
 }
 
 .controls {
@@ -113,6 +123,7 @@ h1 {
 	width: 1em;
 	height: 1em;
 	border-radius: 100%;
+	pointer-events: auto;
 }
 
 .start-btn {
@@ -132,6 +143,7 @@ h1 {
 	display: inline-block;
 	width: 2em;
 	height: 1em;
+	pointer-events: auto;
 }
 
 .switch input {
@@ -174,4 +186,8 @@ input:checked + .slider:before {
 	-webkit-transform: translateX(1em);
 	-ms-transform: translateX(1em);
 	transform: translateX(1em);
+}
+
+.on-off-label {
+	margin-top: -.5em;
 }
