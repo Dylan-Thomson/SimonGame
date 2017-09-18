@@ -29,7 +29,7 @@ h1 {
 	height: 10em;
 	width: 10em;
 	border: .25em solid #333;
-	/*cursor: pointer;*/
+	cursor: pointer;
 	/*z-index: 2;*/
 }
 
@@ -88,6 +88,8 @@ h1 {
     /*pointer-events: none;*/
     z-index: 1;
     overflow: hidden;
+    -webkit-clip-path: inset(0 0 0 0 round 100%);
+    clip-path: inset(0 0 0 0 round 100%);
 }
 
 .game-controls .row {
