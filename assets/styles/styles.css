@@ -160,8 +160,8 @@ h1 {
 	right: 0;
 	bottom: 0;
 	background: #222;
-	-webkit-transition: .4s;
-	transition: .4s;
+	/*-webkit-transition: .4s;*/
+	/*transition: .4s;*/
 }
 
 .slider:before {
@@ -172,8 +172,8 @@ h1 {
     left: 0.25em;
     bottom: 0.25em;
     background: blue;
-	-webkit-transition: .4s;
-	transition: .4s;
+	/*-webkit-transition: .4s;*/
+	/*transition: .4s;*/
 }
 
 input:checked + .slider {
