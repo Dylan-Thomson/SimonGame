@@ -2,8 +2,9 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<title>Simon Game</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="assets/styles/styles.css">
 </head>
 <body>
@@ -39,21 +40,35 @@
 				</div>
 				<div class="row controls">
 					<div class="col-xs-4">
-						<div class="count-display">00</div>
+						<div class="count-display">--</div>
 						Count
 					</div>
 					<div class="col-xs-4">
-						<button>Start</button>
+						<!-- <button>Start</button> -->
+						<div class="start-btn-container">
+							<div class="start-btn"></div>
+						</div>
 						Start
 					</div>
 					<div class="col-xs-4">
-						<button>Strict</button>
+						<!-- <button>Strict</button> -->
+						<div class="strict-btn-container">
+							<div class="strict-btn"></div>
+						</div>
 						Strict
 					</div>
 				</div>
-				<div class="row">
+				<div class="row on-off-container">
 					<div class="col-xs-12">
-						<button>On/Off</button>
+						Off
+						<label class="switch">
+							<input type="checkbox" name="">
+							<span class="slider"></span>
+						</label>
+						On
+<!-- 						Off
+						<i class="fa fa-2x fa-toggle-on on-off" aria-hidden="true"></i>
+						On -->
 					</div>
 				</div>
 			</div>
