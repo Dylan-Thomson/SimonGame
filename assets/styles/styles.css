@@ -11,18 +11,12 @@ h1 {
 }
 
 .game-space {
-	/*height: 50vh;*/
-	/*width: 50vw;*/
-	/*background: #459834;*/
-	/*border-radius: 100%;*/
 	margin: auto;
 	position: relative;
 }
 
 .game-btns {
-	z-index: 1;
 	position: relative;
-	/*transform: rotate(45deg);*/
 }
 
 .btn-upper-left, .btn-upper-right, .btn-lower-left, .btn-lower-right {
@@ -30,39 +24,26 @@ h1 {
 	width: 10em;
 	border: .25em solid #333;
 	cursor: pointer;
-	/*z-index: 2;*/
 }
 
 .btn-upper-left {
-/*	height: 10em;
-	width: 10em;*/
 	background: green;
 	border-radius: 100% 0 0 0;
-	/*border: .25em solid #CCC;*/
 }
 
 .btn-upper-right {
-	/*height: 10em;*/
-	/*width: 10em;*/
 	background: red;
 	border-radius: 0 100% 0 0;
-	/*border: .25em solid #CCC;*/
 }
 
 .btn-lower-left {
-	/*height: 10em;*/
-	/*width: 10em;*/
 	background: yellow;
 	border-radius: 0 0 0 100%;
-	/*border: .25em solid #CCC;*/
 }
 
 .btn-lower-right {
-	/*height: 10em;*/
-	/*width: 10em;*/
 	background: blue;
 	border-radius: 0 0 100% 0;
-	/*border: .25em solid #CCC;*/
 }
 
 .col-xs-6 {
@@ -83,17 +64,9 @@ h1 {
     border-radius: 100%;
     position: absolute;
     top: 2.5em;
-
     left: 1.5em;
-    /*pointer-events: none;*/
-    z-index: 1;
-    overflow: hidden;
     -webkit-clip-path: inset(0 0 0 0 round 100%);
     clip-path: inset(0 0 0 0 round 100%);
-}
-
-.game-controls .row {
-	overflow: hidden;
 }
 
 .controls {
@@ -102,7 +75,6 @@ h1 {
 }
 
 .count-display {
-	/*display: inline;*/
 	width: 50%;
 	margin: auto;
 	background: #111;
@@ -114,7 +86,6 @@ h1 {
 .start-btn-container, .strict-btn-container {
 	width: 1.5em;
 	height: 1.5em;
-	/*display: inline;*/
 	margin: .25em auto;
 
 	border-radius: 100%;
@@ -125,7 +96,7 @@ h1 {
 	width: 1em;
 	height: 1em;
 	border-radius: 100%;
-	pointer-events: auto;
+	margin: auto;
 	cursor: pointer;
 	padding: .25em;
 }
@@ -138,7 +109,7 @@ h1 {
 	background: red;
 }
 
-.strict-light, .start-light {
+.start-light, .strict-light {
 	width: .5em;
 	height: .5em;
 	border-radius: 100%;
@@ -162,7 +133,6 @@ h1 {
 	display: inline-block;
 	width: 2em;
 	height: 1em;
-	pointer-events: auto;
 }
 
 .switch input {
@@ -177,8 +147,6 @@ h1 {
 	right: 0;
 	bottom: 0;
 	background: #222;
-	/*-webkit-transition: .4s;*/
-	/*transition: .4s;*/
 }
 
 .slider:before {
@@ -189,16 +157,6 @@ h1 {
     left: 0.25em;
     bottom: 0.25em;
     background: blue;
-	/*-webkit-transition: .4s;*/
-	/*transition: .4s;*/
-}
-
-input:checked + .slider {
-	/*background: #111;*/
-}
-
-input:focus + .slider {
-	box-shadow: 0 0 .1em #222;
 }
 
 input:checked + .slider:before {
