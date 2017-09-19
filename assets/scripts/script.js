@@ -57,6 +57,10 @@ function initControlButtonListeners() {
         }
         else {
             console.log("off", isOn);
+            isStrict = false;
+            $(".strict-light").addClass("hidden");
+            isStarted = false;
+            $(".start-light").addClass("hidden");
         }
     });    
 }
