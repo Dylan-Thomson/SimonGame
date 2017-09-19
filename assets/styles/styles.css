@@ -152,8 +152,8 @@ h1 {
 .slider:before {
 	position: absolute;
 	content: "";
-    height: .5em;
-    width: .5em;
+	height: .5em;
+	width: .5em;
     left: 0.25em;
     bottom: 0.25em;
     background: blue;
