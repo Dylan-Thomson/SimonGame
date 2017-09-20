@@ -51,6 +51,9 @@ function initControlButtonListeners() {
             isStarted = !isStarted;
             console.log("isStarted = " + isStarted);
             $(".start-light").toggleClass("hidden");
+            if(isStarted) {
+                addMoveToSequence();
+            }
         }
     });
     $(".strict-btn").on("click", function() {
