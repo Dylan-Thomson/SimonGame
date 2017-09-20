@@ -84,9 +84,14 @@ function addMoveToSequence() {
 }
 
 function playSequence() {
-    sequence.forEach(function(move) {
-        playMove(move);
-    });
+    var counter = 0;
+    var i = setInterval(function() {
+        playMove(sequence[counter]);
+        counter++;
+        if(counter >= count) {
+            clearInterval(i);
+        }
+    }, 1000);
 }
 
 function playMove(move) {
