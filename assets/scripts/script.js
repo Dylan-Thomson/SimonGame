@@ -11,7 +11,6 @@ var isBoardDisabled = false;
 var sequence = [];
 var placeInSequence = 0;
 var movesToWin = 5;
-var count = 0;
 var sounds = [
     new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
     new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
@@ -82,6 +81,7 @@ function initControlButtonListeners() {
             $(".strict-light").addClass("hidden");
             isStarted = false;
             $(".start-light").addClass("hidden");
+            resetGameState();
         }
     });    
 }
@@ -89,7 +89,7 @@ function initControlButtonListeners() {
 function addMoveToSequence() {
     console.log("addMoveToSequence()");
     sequence.push(Math.floor(Math.random() * 4));
-    count++;
+    updateCountDisplay();
     placeInSequence = 0;
     playSequence();
 }
@@ -102,7 +102,7 @@ function playSequence() {
         playMove(sequence[counter]);
         // console.log(isPlayable());
         counter++;
-        if(counter >= count) {
+        if(counter >= sequence.length) {
             clearInterval(i);
             isBoardDisabled = false;
         }
@@ -120,7 +120,9 @@ function compareMove(move) {
     if(move !== sequence[placeInSequence]) {
         console.log("YOU MESSED UP", move, sequence[placeInSequence]);
         if(isStrict) {
-            //reset count to zero, clear sequence, etc
+            console.log("You have lost, press start to play again.")
+            resetGameState();
+            $(".start-btn").trigger("click");
         }
         else {
             placeInSequence = 0;
@@ -131,12 +133,11 @@ function compareMove(move) {
         placeInSequence++;
         if(sequence.length == movesToWin && placeInSequence > (sequence.length - 1)) {
             console.log("Winner!");
-            sequence = [];
-            count = 0;
+            resetGameState()
             $(".start-btn").trigger("click");
         }
-        else if(placeInSequence > (count - 1)) {
-            console.log("placeInSequence = " + placeInSequence + " count-1 = " + (count - 1));
+        else if(placeInSequence > (sequence.length - 1)) {
+            console.log("placeInSequence = " + placeInSequence + " count-1 = " + (sequence.length - 1));
             addMoveToSequence();
         }       
     }
@@ -144,4 +145,18 @@ function compareMove(move) {
 
 function isPlayable() {
     return isOn && !isBoardDisabled;
+}
+
+function updateCountDisplay() {
+    if(sequence.length <= 0) {
+        $(".count-display").text("--");
+    }
+    else {
+        $(".count-display").text(sequence.length);
+    }
+}
+
+function resetGameState() {
+    sequence = [];
+    updateCountDisplay();
 }
