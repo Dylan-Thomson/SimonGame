@@ -8,6 +8,7 @@ var isOn = $("input:checkbox").is(":checked");
 var isStrict = false;
 var isStarted = false;
 var sequence = [];
+var placeInSequence = 0;
 var count = 0;
 var sounds = [
     new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
@@ -21,24 +22,33 @@ function initGameButtonListeners() {
         if(isOn) {
             console.log(".btn-upper-left clicked");
             playMove(0);
+            compareMove(0);
+            placeInSequence++;
+            //compare with current sequence
         }
     });
     $(".btn-upper-right").on("click", function() {
         if(isOn) {
             console.log(".btn-upper-right clicked");
             playMove(1);
+            compareMove(1);
+            placeInSequence++;
         }
     });
     $(".btn-lower-left").on("click", function() {
         if(isOn) {
             console.log(".btn-lower-left clicked");
             playMove(2);
+            compareMove(2);
+            placeInSequence++;
         }
     });    
     $(".btn-lower-right").on("click", function() {
         if(isOn) {
             console.log(".btn-lower-right clicked");
             playMove(3);
+            compareMove(3);
+            placeInSequence++;
 
         }
     });    
@@ -83,6 +93,7 @@ function initControlButtonListeners() {
 function addMoveToSequence() {
     sequence.push(Math.floor(Math.random() * 4));
     count++;
+    placeInSequence = 0;
     playSequence();
 }
 
@@ -100,4 +111,10 @@ function playSequence() {
 function playMove(move) {
     console.log("." + move);
     sounds[move].play();
+}
+
+function compareMove(move) {
+    if(move !== sequence[placeInSequence]) {
+        console.log("YOU MESSED UP", move, sequence[placeInSequence]);
+    }
 }
