@@ -21,28 +21,28 @@ var sounds = [
 
 function initGameButtonListeners() {
     $(".btn-upper-left").on("click", function() {
-        if(isPlayable()) {
+        if(isPlayable() && isStarted) {
             console.log(".btn-upper-left clicked");
             playMove(0);
             compareMove(0);
         }
     });
     $(".btn-upper-right").on("click", function() {
-        if(isPlayable()) {
+        if(isPlayable() && isStarted) {
             console.log(".btn-upper-right clicked");
             playMove(1);
             compareMove(1);
         }
     });
     $(".btn-lower-left").on("click", function() {
-        if(isPlayable()) {
+        if(isPlayable() && isStarted) {
             console.log(".btn-lower-left clicked");
             playMove(2);
             compareMove(2);
         }
     });    
     $(".btn-lower-right").on("click", function() {
-        if(isPlayable()) {
+        if(isPlayable() && isStarted) {
             console.log(".btn-lower-right clicked");
             playMove(3);
             compareMove(3);
