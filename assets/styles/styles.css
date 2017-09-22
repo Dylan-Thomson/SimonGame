@@ -115,7 +115,7 @@ h1 {
     background: #FD000D;
 }
 
-.start-light, .strict-light {
+/*.start-light, .strict-light {
     width: .5em;
     height: .5em;
     border-radius: 100%;
@@ -129,7 +129,7 @@ h1 {
 .strict-light {
     background: #DDD;
 }
-
+*/
 .on-off-container {
     margin-top: 1em;
 }

@@ -59,6 +59,9 @@ function initControlButtonListeners() {
             if(isStarted) {
                 addMoveToSequence();
             }
+            else {
+                resetGameState();
+            }
         }
     });
     $(".strict-btn").on("click", function() {
