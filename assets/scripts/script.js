@@ -55,7 +55,7 @@ function initControlButtonListeners() {
             console.log(".start-btn clicked");
             isStarted = !isStarted;
             console.log("isStarted = " + isStarted);
-            $(".start-light").toggleClass("hidden");
+            $(".start-btn").toggleClass("full-opacity");
             if(isStarted) {
                 addMoveToSequence();
             }
@@ -66,7 +66,7 @@ function initControlButtonListeners() {
             console.log(".strict-btn clicked");
             isStrict = !isStrict;
             console.log("isStrict = " + isStrict);
-            $(".strict-light").toggleClass("hidden");
+            $(".strict-btn").toggleClass("full-opacity");
         }
     });
     $("input:checkbox").on("change", function() {
@@ -100,7 +100,6 @@ function playSequence() {
     var counter = 0;
     var i = setInterval(function() {
         playMove(sequence[counter]);
-        // console.log(isPlayable());
         counter++;
         if(counter >= sequence.length) {
             clearInterval(i);
@@ -111,6 +110,12 @@ function playSequence() {
 
 function playMove(move) {
     console.log("playMove() ." + move);
+    $("." + move).toggleClass("full-opacity");
+    setTimeout(function() {
+        $("." + move).toggleClass("full-opacity");
+    }, 400);
+    //toggleClass()
+    //setInterval() {toggleClass()}
     sounds[move].play();
 
 }

@@ -1,3 +1,7 @@
+body {
+    background: #222;
+}
+
 h1 {
     margin-top: 1em;
 }
@@ -24,25 +28,26 @@ h1 {
     width: 10em;
     border: .25em solid #333;
     cursor: pointer;
+    opacity: .5;
 }
 
 .btn-upper-left {
-    background: green;
+    background: #16E900;
     border-radius: 100% 0 0 0;
 }
 
 .btn-upper-right {
-    background: red;
+    background: #FD000D;
     border-radius: 0 100% 0 0;
 }
 
 .btn-lower-left {
-    background: yellow;
+    background: #FFFF00;
     border-radius: 0 0 0 100%;
 }
 
 .btn-lower-right {
-    background: blue;
+    background: #3401D9;
     border-radius: 0 0 100% 0;
 }
 
@@ -78,7 +83,7 @@ h1 {
     width: 50%;
     margin: auto;
     background: #111;
-    color: red;
+    color: #FD000D;
     padding: .25em;
     border-radius: 25%;
 }
@@ -99,14 +104,15 @@ h1 {
     margin: auto;
     cursor: pointer;
     padding: .25em;
+    opacity: .25;
 }
 
 .start-btn {
-    background: green;
+    background: #16E900;
 }
 
 .strict-btn {
-    background: red;
+    background: #FD000D;
 }
 
 .start-light, .strict-light {
@@ -117,11 +123,11 @@ h1 {
 }
 
 .start-light {
-    background: blue;
+    background: #DDD;
 }
 
 .strict-light {
-    background: pink;
+    background: #DDD;
 }
 
 .on-off-container {
@@ -156,7 +162,7 @@ h1 {
     width: .5em;
     left: 0.25em;
     bottom: 0.25em;
-    background: blue;
+    background: #3401D9;
 }
 
 input:checked + .slider:before {
@@ -171,4 +177,8 @@ input:checked + .slider:before {
 
 .count-off {
     color: gray;
+}
+
+.full-opacity {
+    opacity: 1;
 }
