@@ -81,9 +81,9 @@ function initControlButtonListeners() {
         else {
             console.log("off", isOn);
             isStrict = false;
-            $(".strict-light").addClass("hidden");
+            $(".strict-btn").removeClass("full-opacity");
             isStarted = false;
-            $(".start-light").addClass("hidden");
+            $(".start-btn").removeClass("full-opacity");
             resetGameState();
         }
     });    
