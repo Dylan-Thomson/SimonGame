@@ -10,6 +10,7 @@ var isStarted = false;
 var isBoardDisabled = false;
 var sequence = [];
 var placeInSequence = 0;
+var interval;
 var movesToWin = 5;
 var sounds = [
     new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
@@ -51,7 +52,8 @@ function initGameButtonListeners() {
 
 function initControlButtonListeners() {
     $(".start-btn").on("click", function() {
-        if(isPlayable()) {
+        if(isOn) {
+            clearInterval(interval);
             console.log(".start-btn clicked");
             isStarted = !isStarted;
             console.log("isStarted = " + isStarted);
@@ -101,11 +103,11 @@ function playSequence() {
     console.log("playSequence()", sequence);
     isBoardDisabled = true;
     var counter = 0;
-    var i = setInterval(function() {
+    interval = setInterval(function() {
         playMove(sequence[counter]);
         counter++;
         if(counter >= sequence.length) {
-            clearInterval(i);
+            clearInterval(interval);
             isBoardDisabled = false;
         }
     }, 1000);
@@ -117,8 +119,6 @@ function playMove(move) {
     setTimeout(function() {
         $("." + move).toggleClass("full-opacity");
     }, 400);
-    //toggleClass()
-    //setInterval() {toggleClass()}
     sounds[move].play();
 
 }
