@@ -60,6 +60,9 @@ function initControlButtonListeners() {
             $(".start-btn").toggleClass("full-opacity");
             if(isStarted) {
                 fadeToNewMsg("Here we go!");
+                sounds.forEach(function(sound) {
+                    sound.muted = false;
+                });
                 addMoveToSequence();
             }
             else {
@@ -81,10 +84,16 @@ function initControlButtonListeners() {
         $(".count-display").toggleClass("count-off");
         if($(this).is(":checked")) {
             console.log("on", isOn);
+
             var counter = 0;
             isOn = false;
+            sounds.forEach(function(sound) {
+                sound.muted = true;
+                sound.play();
+            });
             var startInterval = setInterval(function() {
-                sounds[counter].play();
+                // sounds[counter].muted = false;
+                // sounds[counter].play();
                 flashLight(counter);
                 counter++;
                 if(counter > 3) {
