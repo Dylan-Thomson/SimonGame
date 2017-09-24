@@ -81,6 +81,17 @@ function initControlButtonListeners() {
         $(".count-display").toggleClass("count-off");
         if($(this).is(":checked")) {
             console.log("on", isOn);
+            var counter = 0;
+            isOn = false;
+            var startInterval = setInterval(function() {
+                sounds[counter].play();
+                flashLight(counter);
+                counter++;
+                if(counter > 3) {
+                    clearInterval(startInterval);
+                    isOn = true;
+                }
+            }, 200);
             $(".msg").text("Click start!");
             $(".msg").fadeTo("slow", 1);
 
@@ -120,14 +131,18 @@ function playSequence() {
     }, 1000);
 }
 
-function playMove(move) {
-    console.log("playMove() ." + move);
-    $("." + move).toggleClass("full-opacity");
-    setTimeout(function() {
-        $("." + move).toggleClass("full-opacity");
-    }, 400);
-    sounds[move].play();
+function playMove(btn) {
+    console.log("playMove() ." + btn);
+    flashLight(btn);
+    sounds[btn].play();
 
+}
+
+function flashLight(btn) {
+    $("." + btn).toggleClass("full-opacity");
+    setTimeout(function() {
+        $("." + btn).toggleClass("full-opacity");
+    }, 400);
 }
 
 function compareMove(move) {
