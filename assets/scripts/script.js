@@ -59,9 +59,11 @@ function initControlButtonListeners() {
             console.log("isStarted = " + isStarted);
             $(".start-btn").toggleClass("full-opacity");
             if(isStarted) {
+                fadeToNewMsg("Here we go!");
                 addMoveToSequence();
             }
             else {
+                fadeToNewMsg("Click Start!");
                 resetGameState();
             }
         }
@@ -79,9 +81,14 @@ function initControlButtonListeners() {
         $(".count-display").toggleClass("count-off");
         if($(this).is(":checked")) {
             console.log("on", isOn);
+            $(".msg").text("Click start!");
+            $(".msg").fadeTo("slow", 1);
+
         }
         else {
             console.log("off", isOn);
+            $(".msg").fadeTo("slow", 0);
+
             isStrict = false;
             $(".strict-btn").removeClass("full-opacity");
             isStarted = false;
@@ -127,8 +134,10 @@ function compareMove(move) {
     console.log("compareMove()", move, sequence[placeInSequence]);
     if(move !== sequence[placeInSequence]) {
         console.log("YOU MESSED UP", move, sequence[placeInSequence]);
+        fadeToNewMsg("Wrong!");
         if(isStrict) {
             console.log("You have lost, press start to play again.")
+            fadeToNewMsg("You lose!");
             resetGameState();
             $(".start-btn").trigger("click");
         }
@@ -141,12 +150,16 @@ function compareMove(move) {
         placeInSequence++;
         if(sequence.length == movesToWin && placeInSequence > (sequence.length - 1)) {
             console.log("Winner!");
+            fadeToNewMsg("Winner!");
             resetGameState()
             $(".start-btn").trigger("click");
         }
         else if(placeInSequence > (sequence.length - 1)) {
             console.log("placeInSequence = " + placeInSequence + " count-1 = " + (sequence.length - 1));
             addMoveToSequence();
+            if($(".msg").css("opacity") > 0) {
+                $(".msg").fadeTo("slow", 0);
+            }
         }       
     }
 }
@@ -167,4 +180,18 @@ function updateCountDisplay() {
 function resetGameState() {
     sequence = [];
     updateCountDisplay();
+
+}
+
+function fadeToNewMsg(msg) {
+    if($(".msg").css("opacity") > 0) {
+        $(".msg").fadeTo("slow", 0, function() {
+            $(".msg").text(msg);
+            $(".msg").fadeTo("slow", 1);
+        });
+    }
+    else {
+        $(".msg").text(msg);
+        $(".msg").fadeTo("slow", 1);
+    }
 }

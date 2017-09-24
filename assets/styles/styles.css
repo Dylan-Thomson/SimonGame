@@ -1,9 +1,29 @@
 body {
     background: #222;
+    color: #CCC;
 }
 
 h1 {
     margin-top: 1em;
+}
+
+.msg {
+    opacity: 0;
+    margin: 0;
+    /*padding: 0 .25em;*/
+    /*width: 10em;*/
+    /*width: 8.25em;*/
+    /*width: 100vw;*/
+    /*margin: none;*/
+    /*padding: none;*/
+}
+
+.msg-container {
+    max-width: 250px;
+    background: #111;
+    border: .5em solid #333;
+    border-radius: 1em;
+    margin-bottom: 1em;
 }
 
 .vertical-center {
@@ -17,6 +37,7 @@ h1 {
 .game-space {
     margin: auto;
     position: relative;
+    /*max-width: 20em;*/
 }
 
 .game-btns {
@@ -68,7 +89,7 @@ h1 {
     border: .5em solid #333;
     border-radius: 100%;
     position: absolute;
-    top: 2.5em;
+    top: 7em;
     left: 1.5em;
     -webkit-clip-path: inset(0 0 0 0 round 100%);
     clip-path: inset(0 0 0 0 round 100%);
