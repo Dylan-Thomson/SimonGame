@@ -142,7 +142,7 @@ function flashLight(btn) {
     $("." + btn).toggleClass("full-opacity");
     setTimeout(function() {
         $("." + btn).toggleClass("full-opacity");
-    }, 400);
+    }, 200);
 }
 
 function compareMove(move) {
