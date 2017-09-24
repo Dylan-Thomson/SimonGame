@@ -3,7 +3,7 @@ body {
     color: #CCC;
 }
 
-h1 {
+h1, footer {
     margin-top: 1em;
 }
 
