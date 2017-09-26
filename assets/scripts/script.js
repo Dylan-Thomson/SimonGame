@@ -2,6 +2,7 @@
 $(function() {
     initGameButtonListeners();
     initControlButtonListeners();
+    // howl.play();
 });
 
 var isOn = $("input:checkbox").is(":checked");
@@ -11,13 +12,29 @@ var isBoardDisabled = false;
 var sequence = [];
 var placeInSequence = 0;
 var interval;
-var movesToWin = 5;
+var movesToWin = 20;
 var sounds = [
-    new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
-    new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
-    new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
-    new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3")
+    new Howl({
+        src: ["https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"]
+    }),
+    new Howl({
+        src: ["https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"]
+    }),
+    new Howl({
+       src: ["https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"]
+    }),
+    new Howl({
+       src: ["https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"]
+    })
+    // new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
+    // new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
+    // new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
+    // new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3")
 ];
+
+// var howl = new Howl ({
+//     src: ["https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"]
+// });
 
 function initGameButtonListeners() {
     $(".btn-upper-left").on("click", function() {
@@ -87,13 +104,13 @@ function initControlButtonListeners() {
 
             var counter = 0;
             isOn = false;
-            sounds.forEach(function(sound) {
-                sound.muted = true;
-                sound.play();
-            });
+            // sounds.forEach(function(sound) {
+            //     sound.muted = true;
+            //     sound.play();
+            // });
             var startInterval = setInterval(function() {
                 // sounds[counter].muted = false;
-                // sounds[counter].play();
+                sounds[counter].play();
                 flashLight(counter);
                 counter++;
                 if(counter > 3) {
@@ -154,6 +171,8 @@ function flashLight(btn) {
     }, 200);
 }
 
+//TODO: Fix "you lost message" not being displayed
+//TODO: Consider howler.js for sounds
 function compareMove(move) {
     console.log("compareMove()", move, sequence[placeInSequence]);
     if(move !== sequence[placeInSequence]) {
