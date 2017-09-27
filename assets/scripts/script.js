@@ -3,7 +3,7 @@ $(function() {
     initControlButtonListeners();
 });
 
-var isOn = $("input:checkbox").is(":checked");
+var isOn = false;
 var isStrict = false;
 var isStarted = false;
 var isBoardDisabled = false;
