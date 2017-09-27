@@ -16,20 +16,16 @@ var interval;
 var movesToWin = 20;
 var sounds = [
     new Howl({
-        src: ["https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"],
-        html5: false
+        src: ["https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"]
     }),
     new Howl({
-        src: ["https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"],
-        html5: false
+        src: ["https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"]
     }),
     new Howl({
-        src: ["https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"],
-        html5: false
+        src: ["https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"]
     }),
     new Howl({
-        src: ["https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"],
-        html5: false
+        src: ["https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"]
     }),
     // new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
     // new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
@@ -104,16 +100,17 @@ function initControlButtonListeners() {
             console.log("on", isOn);
 
             isOn = false;
-            // sounds.forEach(function(sound) {
-                // sound.mute(true);
-                // sound.play();
-            // });
+            Howler.mute(true);
+            sounds.forEach(function(sound) {
+                // sound.mute(true).play();
+                sound.play();
+            });
 
             var counter = 0;
             var startInterval = setInterval(function() {
                 // sounds[counter].mute(false).play();
-                // Howler.mute(false);
-                sounds[counter].play();
+                Howler.mute(false);
+                // sounds[counter].play();
                 flashLight(counter);
                 counter++;
                 if(counter > 3) {
