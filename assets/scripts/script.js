@@ -107,7 +107,7 @@ function initControlButtonListeners() {
 
             var counter = 0;
             var startInterval = setInterval(function() {
-                sounds[counter].mute(false);
+                sounds[counter].mute(false).play();
                 // Howler.mute(false);
                 // sounds[counter].play();
                 flashLight(counter);
