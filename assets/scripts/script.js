@@ -98,10 +98,10 @@ function initControlButtonListeners() {
             console.log("on", isOn);
 
             isOn = false;
-            // Howler.mute(true);
-            // sounds.forEach(function(sound) {
-            //     // sound.play();
-            // });
+            Howler.mute(true);
+            sounds.forEach(function(sound) {
+                sound.play();
+            });
 
             var counter = 0;
             var startInterval = setInterval(function() {
