@@ -101,7 +101,7 @@ function initControlButtonListeners() {
 
             isOn = false;
             sounds.forEach(function(sound) {
-                sound.mute(true).play();
+                sound.mute(true);
                 // sound.play();
             });
 
