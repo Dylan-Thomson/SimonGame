@@ -7,43 +7,6 @@ h1, footer {
     margin-top: 1em;
 }
 
-.msg {
-    opacity: 0;
-    margin: 0;
-    /*padding: 0 .25em;*/
-    /*width: 10em;*/
-    /*width: 8.25em;*/
-    /*width: 100vw;*/
-    /*margin: none;*/
-    /*padding: none;*/
-}
-
-.msg-container {
-    max-width: 250px;
-    background: #111;
-    border: .5em solid #333;
-    border-radius: 1em;
-    margin-bottom: 1em;
-}
-
-.vertical-center {
-    display: flex;
-    align-items: center;
-    min-height: 100vh;
-    min-width: 100vw;
-    text-align: center;
-}
-
-.game-space {
-    margin: auto;
-    position: relative;
-    /*max-width: 20em;*/
-}
-
-.game-btns {
-    position: relative;
-}
-
 .btn-upper-left, .btn-upper-right, .btn-lower-left, .btn-lower-right {
     height: 10em;
     width: 10em;
@@ -81,6 +44,32 @@ h1, footer {
     padding: 0;
 }
 
+.controls {
+    width: 90%;
+    margin: auto;
+}
+
+.count-display {
+    width: 50%;
+    margin: auto;
+    background: #111;
+    color: #FD000D;
+    padding: .25em;
+    border-radius: 25%;
+}
+
+.count-off {
+    color: gray;
+}
+
+.full-opacity {
+    opacity: 1;
+}
+
+.game-btns {
+    position: relative;
+}
+
 .game-controls {
     height: 15em;
     width: 15em;
@@ -95,18 +84,30 @@ h1, footer {
     clip-path: inset(0 0 0 0 round 100%);
 }
 
-.controls {
-    width: 90%;
+.game-space {
     margin: auto;
+    position: relative;
 }
 
-.count-display {
-    width: 50%;
-    margin: auto;
+.msg {
+    opacity: 0;
+    margin: 0;
+}
+
+.msg-container {
+    max-width: 250px;
     background: #111;
-    color: #FD000D;
-    padding: .25em;
-    border-radius: 25%;
+    border: .5em solid #333;
+    border-radius: 1em;
+    margin-bottom: 1em;
+}
+
+.on-off-container {
+    margin-top: 1em;
+}
+
+.on-off-label {
+    margin-top: -.5em;
 }
 
 .start-btn-container, .strict-btn-container {
@@ -134,25 +135,6 @@ h1, footer {
 
 .strict-btn {
     background: #FD000D;
-}
-
-/*.start-light, .strict-light {
-    width: .5em;
-    height: .5em;
-    border-radius: 100%;
-    margin: auto;
-}
-
-.start-light {
-    background: #DDD;
-}
-
-.strict-light {
-    background: #DDD;
-}
-*/
-.on-off-container {
-    margin-top: 1em;
 }
 
 .switch {
@@ -192,14 +174,10 @@ input:checked + .slider:before {
     transform: translateX(1em);
 }
 
-.on-off-label {
-    margin-top: -.5em;
-}
-
-.count-off {
-    color: gray;
-}
-
-.full-opacity {
-    opacity: 1;
+.vertical-center {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 100vw;
+    text-align: center;
 }
