@@ -100,7 +100,7 @@ function initControlButtonListeners() {
             isOn = false;
             Howler.mute(true);
             sounds.forEach(function(sound) {
-                sound.play();
+                // sound.play();
             });
 
             var counter = 0;
