@@ -13,10 +13,22 @@ var placeInSequence = 0;
 var interval;
 var movesToWin = 20;
 var sounds = [
-    new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
-    new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
-    new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
-    new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3")
+    new Howl({
+        src: ["https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"]
+    }),
+    new Howl({
+        src: ["https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"]
+    }),
+    new Howl({
+        src: ["https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"]
+    }),
+    new Howl({
+        src: ["https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"]
+    }),
+    // new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
+    // new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
+    // new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
+    // new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3")
 ];
 
 function initGameButtonListeners() {
@@ -85,13 +97,16 @@ function initControlButtonListeners() {
         if($(this).is(":checked")) {
             console.log("on", isOn);
 
-            var counter = 0;
             isOn = false;
             sounds.forEach(function(sound) {
-                sound.muted = true;
-                sound.play();
+                // sound.mute(true);
+                // sound.play();
             });
+
+            var counter = 0;
             var startInterval = setInterval(function() {
+                // sounds[counter].mute(false);
+                sounds[counter].play();
                 flashLight(counter);
                 counter++;
                 if(counter > 3) {
