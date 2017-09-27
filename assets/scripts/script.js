@@ -4,6 +4,8 @@ $(function() {
     initControlButtonListeners();
 });
 
+Howler.mobileAutoEnable = true;
+
 var isOn = $("input:checkbox").is(":checked");
 var isStrict = false;
 var isStarted = false;
