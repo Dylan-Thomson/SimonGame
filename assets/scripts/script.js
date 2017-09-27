@@ -101,10 +101,10 @@ function initControlButtonListeners() {
 
             isOn = false;
             Howler.mute(true);
-            sounds.forEach(function(sound) {
+            // sounds.forEach(function(sound) {
                 // sound.mute(true).play();
-                sound.play();
-            });
+                // sound.play();
+            // });
 
             var counter = 0;
             var startInterval = setInterval(function() {
