@@ -4,7 +4,7 @@ $(function() {
     initControlButtonListeners();
 });
 
-Howler.mobileAutoEnable = true;
+// Howler.mobileAutoEnable = true;
 
 var isOn = $("input:checkbox").is(":checked");
 var isStrict = false;
@@ -100,7 +100,7 @@ function initControlButtonListeners() {
             console.log("on", isOn);
 
             isOn = false;
-            // Howler.mute(true);
+            Howler.mute(true);
             // sounds.forEach(function(sound) {
                 // sound.play();
             // });
@@ -108,7 +108,7 @@ function initControlButtonListeners() {
             var counter = 0;
             var startInterval = setInterval(function() {
                 // sounds[counter].mute(false);
-                // Howler.mute(false);
+                Howler.mute(false);
                 sounds[counter].play();
                 flashLight(counter);
                 counter++;
