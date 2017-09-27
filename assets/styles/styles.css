@@ -62,9 +62,6 @@ h1, footer {
     color: gray;
 }
 
-.full-opacity {
-    opacity: 1;
-}
 
 .game-btns {
     position: relative;
@@ -180,4 +177,8 @@ input:checked + .slider:before {
     min-height: 100vh;
     min-width: 100vw;
     text-align: center;
+}
+
+.full-opacity {
+    opacity: 1;
 }

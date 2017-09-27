@@ -1,4 +1,3 @@
-// Document Ready
 $(function() {
     initGameButtonListeners();
     initControlButtonListeners();
@@ -29,48 +28,34 @@ var sounds = [
 
 function initGameButtonListeners() {
     $(".btn-upper-left").on("click", function() {
-        if(isPlayable() && isStarted) {
-            console.log(".btn-upper-left clicked");
-            playMove(0);
-            compareMove(0);
-        }
+        buttonClick(0);
     });
     $(".btn-upper-right").on("click", function() {
-        if(isPlayable() && isStarted) {
-            console.log(".btn-upper-right clicked");
-            playMove(1);
-            compareMove(1);
-        }
+        buttonClick(1);
     });
     $(".btn-lower-left").on("click", function() {
-        if(isPlayable() && isStarted) {
-            console.log(".btn-lower-left clicked");
-            playMove(2);
-            compareMove(2);
-        }
-    });    
+        buttonClick(2)
+    });
     $(".btn-lower-right").on("click", function() {
-        if(isPlayable() && isStarted) {
-            console.log(".btn-lower-right clicked");
-            playMove(3);
-            compareMove(3);
-        }
-    });    
+        buttonClick(3);
+    });
+}
+
+function buttonClick(btn) {
+    if(isPlayable() && isStarted) {
+        playMove(btn);
+        compareMove(btn);
+    }
 }
 
 function initControlButtonListeners() {
     $(".start-btn").on("click", function() {
         if(isOn) {
             clearInterval(interval);
-            console.log(".start-btn clicked");
             isStarted = !isStarted;
-            console.log("isStarted = " + isStarted);
             $(".start-btn").toggleClass("full-opacity");
             if(isStarted) {
                 fadeToNewMsg("Here we go!");
-                sounds.forEach(function(sound) {
-                    sound.muted = false;
-                });
                 addMoveToSequence();
             }
             else {
@@ -81,9 +66,7 @@ function initControlButtonListeners() {
     });
     $(".strict-btn").on("click", function() {
         if(isPlayable()) {
-            console.log(".strict-btn clicked");
             isStrict = !isStrict;
-            console.log("isStrict = " + isStrict);
             $(".strict-btn").toggleClass("full-opacity");
         }
     });
@@ -91,8 +74,6 @@ function initControlButtonListeners() {
         isOn = !isOn;
         $(".count-display").toggleClass("count-off");
         if($(this).is(":checked")) {
-            console.log("on", isOn);
-
             isOn = false;
             Howler.mute(true);
             var counter = 0;
@@ -110,9 +91,8 @@ function initControlButtonListeners() {
 
         }
         else {
-            console.log("off", isOn);
             $(".msg").fadeTo("slow", 0);
-
+            clearInterval(interval);
             isStrict = false;
             $(".strict-btn").removeClass("full-opacity");
             isStarted = false;
@@ -123,7 +103,6 @@ function initControlButtonListeners() {
 }
 
 function addMoveToSequence() {
-    console.log("addMoveToSequence()");
     sequence.push(Math.floor(Math.random() * 4));
     updateCountDisplay();
     placeInSequence = 0;
@@ -131,7 +110,6 @@ function addMoveToSequence() {
 }
 
 function playSequence() {
-    console.log("playSequence()", sequence);
     isBoardDisabled = true;
     var counter = 0;
     interval = setInterval(function() {
@@ -145,10 +123,8 @@ function playSequence() {
 }
 
 function playMove(btn) {
-    console.log("playMove() ." + btn);
     flashLight(btn);
     sounds[btn].play();
-
 }
 
 function flashLight(btn) {
@@ -159,10 +135,8 @@ function flashLight(btn) {
 }
 
 function compareMove(move) {
-    console.log("compareMove()", move, sequence[placeInSequence]);
     if(move !== sequence[placeInSequence]) {
         if(isStrict) {
-            console.log("You have lost, press start to play again.")
             fadeToNewMsg("You lose!");
             setTimeout(function() {
                 resetGameState();
@@ -178,13 +152,11 @@ function compareMove(move) {
     else {
         placeInSequence++;
         if(sequence.length == movesToWin && placeInSequence > (sequence.length - 1)) {
-            console.log("Winner!");
             fadeToNewMsg("Winner!");
             resetGameState()
             $(".start-btn").trigger("click");
         }
         else if(placeInSequence > (sequence.length - 1)) {
-            console.log("placeInSequence = " + placeInSequence + " count-1 = " + (sequence.length - 1));
             addMoveToSequence();
             if($(".msg").css("opacity") > 0) {
                 $(".msg").fadeTo("slow", 0);
@@ -209,7 +181,6 @@ function updateCountDisplay() {
 function resetGameState() {
     sequence = [];
     updateCountDisplay();
-
 }
 
 function fadeToNewMsg(msg) {
