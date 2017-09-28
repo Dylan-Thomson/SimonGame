@@ -1,6 +1,8 @@
 $(function() {
     initGameButtonListeners();
-    initControlButtonListeners();
+    initStartButtonListener();
+    initStrictButtonListener();
+    initOnOffSwitchListener();
 });
 
 var isOn = false;
@@ -41,14 +43,7 @@ function initGameButtonListeners() {
     });
 }
 
-function buttonClick(btn) {
-    if(isPlayable() && isStarted) {
-        playMove(btn);
-        compareMove(btn);
-    }
-}
-
-function initControlButtonListeners() {
+function initStartButtonListener() {
     $(".start-btn").on("click", function() {
         if(isOn) {
             clearInterval(playSequenceInterval);
@@ -64,31 +59,25 @@ function initControlButtonListeners() {
             }
         }
     });
+}
+
+function initStrictButtonListener() {
     $(".strict-btn").on("click", function() {
         if(isPlayable()) {
             isStrict = !isStrict;
             $(".strict-btn").toggleClass("full-opacity");
         }
     });
+}
+
+function initOnOffSwitchListener() {
     $("input:checkbox").on("change", function() {
         isOn = !isOn;
         $(".count-display").toggleClass("count-off");
         if($(this).is(":checked")) {
-            isOn = false;
-            Howler.mute(true);
-            var counter = 0;
-            var startInterval = setInterval(function() {
-                Howler.mute(false);
-                flashLight(counter);
-                counter++;
-                if(counter > 3) {
-                    clearInterval(startInterval);
-                    isOn = true;
-                }
-            }, 200);
-            $(".msg").text("Click start!");
-            $(".msg").fadeTo("slow", 1);
-
+            Howler.mute(false);
+            lightShow();
+            fadeToNewMsg("Click Start!");
         }
         else {
             $(".msg").fadeTo("slow", 0);
@@ -100,6 +89,13 @@ function initControlButtonListeners() {
             resetGameState();
         }
     });    
+}
+
+function buttonClick(btn) {
+    if(isPlayable() && isStarted) {
+        playMove(btn);
+        compareMove(btn);
+    }
 }
 
 function addMoveToSequence() {
@@ -127,24 +123,17 @@ function playMove(btn) {
     sounds[btn].play();
 }
 
-function flashLight(btn) {
-    $("." + btn).toggleClass("full-opacity");
-    setTimeout(function() {
-        $("." + btn).toggleClass("full-opacity");
-    }, 200);
-}
-
 function compareMove(move) {
     if(move !== sequence[placeInSequence]) {
         if(isStrict) {
-            fadeToNewMsg("You lose!");
+            fadeToNewMsg("You lost.");
             setTimeout(function() {
                 resetGameState();
                 $(".start-btn").trigger("click");
             }, 1000);
         }
         else {
-            fadeToNewMsg("Wrong!");
+            fadeToNewMsg("Try again.");
             placeInSequence = 0;
             playSequence();            
         }
@@ -152,6 +141,7 @@ function compareMove(move) {
     else {
         placeInSequence++;
         if(sequence.length == movesToWin && placeInSequence > (sequence.length - 1)) {
+            lightShow();
             fadeToNewMsg("Winner!");
             resetGameState()
             $(".start-btn").trigger("click");
@@ -167,6 +157,24 @@ function compareMove(move) {
 
 function isPlayable() {
     return isOn && !isBoardDisabled;
+}
+
+function flashLight(btn) {
+    $("." + btn).toggleClass("full-opacity");
+    setTimeout(function() {
+        $("." + btn).toggleClass("full-opacity");
+    }, 200);
+}
+
+function lightShow() {
+    var counter = 0;
+    var startInterval = setInterval(function() {
+        flashLight(counter);
+        counter++;
+        if(counter > 3) {
+            clearInterval(startInterval);
+        }
+    }, 200);
 }
 
 function resetGameState() {
