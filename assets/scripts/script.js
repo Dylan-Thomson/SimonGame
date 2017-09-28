@@ -9,7 +9,7 @@ var isStarted = false;
 var isBoardDisabled = false;
 var sequence = [];
 var placeInSequence = 0;
-var interval;
+var playSequenceInterval;
 var movesToWin = 20;
 var sounds = [
     new Howl({
@@ -51,7 +51,7 @@ function buttonClick(btn) {
 function initControlButtonListeners() {
     $(".start-btn").on("click", function() {
         if(isOn) {
-            clearInterval(interval);
+            clearInterval(playSequenceInterval);
             isStarted = !isStarted;
             $(".start-btn").toggleClass("full-opacity");
             if(isStarted) {
@@ -92,7 +92,7 @@ function initControlButtonListeners() {
         }
         else {
             $(".msg").fadeTo("slow", 0);
-            clearInterval(interval);
+            clearInterval(playSequenceInterval);
             isStrict = false;
             $(".strict-btn").removeClass("full-opacity");
             isStarted = false;
@@ -112,11 +112,11 @@ function addMoveToSequence() {
 function playSequence() {
     isBoardDisabled = true;
     var counter = 0;
-    interval = setInterval(function() {
+    playSequenceInterval = setInterval(function() {
         playMove(sequence[counter]);
         counter++;
         if(counter >= sequence.length) {
-            clearInterval(interval);
+            clearInterval(playSequenceInterval);
             isBoardDisabled = false;
         }
     }, 1000);
@@ -169,6 +169,11 @@ function isPlayable() {
     return isOn && !isBoardDisabled;
 }
 
+function resetGameState() {
+    sequence = [];
+    updateCountDisplay();
+}
+
 function updateCountDisplay() {
     if(sequence.length <= 0) {
         $(".count-display").text("--");
@@ -176,11 +181,6 @@ function updateCountDisplay() {
     else {
         $(".count-display").text(sequence.length);
     }
-}
-
-function resetGameState() {
-    sequence = [];
-    updateCountDisplay();
 }
 
 function fadeToNewMsg(msg) {
