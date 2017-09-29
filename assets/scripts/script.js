@@ -75,7 +75,7 @@ function initOnOffSwitchListener() {
         isOn = !isOn;
         $(".count-display").toggleClass("count-off");
         if($(this).is(":checked")) {
-            Howler.mute(false);
+            Howler.mute(true);
             lightShow();
             fadeToNewMsg("Click Start!");
         }
@@ -169,6 +169,7 @@ function flashLight(btn) {
 function lightShow() {
     var counter = 0;
     var startInterval = setInterval(function() {
+        Howler.mute(false);
         flashLight(counter);
         counter++;
         if(counter > 3) {
